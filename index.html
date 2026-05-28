@@ -149,7 +149,11 @@
     line-height: 1.15;
     white-space: nowrap;
     clip-path: inset(0 100% 0 0);
-    animation: writeReveal 3.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
+    animation: none;
+  }
+
+  .script-name.animate {
+    animation: writeReveal 3.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
   }
 
   @keyframes writeReveal {
@@ -166,7 +170,12 @@
     box-shadow: 0 0 0 3px rgba(201,168,76,0.2), 0 0 14px 6px rgba(201,168,76,0.35), 0 0 30px 12px rgba(201,168,76,0.1);
     transform: translateY(-50%);
     left: 0%;
-    animation: nibMove 3.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
+    opacity: 0;
+    animation: none;
+  }
+
+  .pen-nib.animate {
+    animation: nibMove 3.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
   }
 
   @keyframes nibMove {
@@ -741,6 +750,14 @@
 </footer>
 
 <script>
+  // Wait for Pinyon Script font to load before starting animation
+  document.fonts.ready.then(() => {
+    const scriptName = document.querySelector('.script-name');
+    const penNib = document.querySelector('.pen-nib');
+    if (scriptName) scriptName.classList.add('animate');
+    if (penNib) penNib.classList.add('animate');
+  });
+
   // Sticky nav on scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
