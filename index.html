@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knox Jefferson Group LLC | Project Management & Federal Contracting</title>
+<meta name="description" content="Knox Jefferson Group LLC is a Tennessee-based management consulting and federal contracting firm specializing in project management and subcontractor coordination.">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:       #0A1F3D;
+    --navy-mid:   #0D2B5E;
+    --navy-dark:  #060f1e;
+    --gold:       #C9A84C;
+    --gold-light: #E2C47A;
+    --white:      #FFFFFF;
+    --off-white:  #F7F5F0;
+    --cream:      #F2EFE8;
+    --text:       #1A1A2E;
+    --text-mid:   #444444;
+    --text-light: #888888;
+    --border:     #E5E2DC;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-dark);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ──────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 52px;
+    background: rgba(6, 15, 30, 0);
+    backdrop-filter: blur(0px);
+    transition: all 0.5s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav.scrolled {
+    background: rgba(6, 15, 30, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom-color: rgba(201,168,76,0.12);
+    padding: 14px 52px;
+  }
+
+  .nav-brand {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 28px;
+    color: var(--gold);
+    opacity: 0.9;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ─────────────────────────────────── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 30% 60%, rgba(13,43,94,0.85) 0%, var(--navy-dark) 100%);
+  }
+
+  #home::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -55%);
+    width: 800px; height: 500px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 68%);
+    pointer-events: none;
+    opacity: 0;
+    animation: glowIn 2s ease 0.5s forwards;
+  }
+
+  @keyframes glowIn { to { opacity: 1; } }
+
+  .top-bar {
+    position: absolute;
+    top: 90px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeUp 1s ease 4.8s forwards;
+  }
+
+  .top-bar-line { width: 50px; height: 1px; background: rgba(201,168,76,0.35); }
+
+  .top-bar-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: rgba(201,168,76,0.6);
+    text-transform: uppercase;
+  }
+
+  /* Script animation */
+  .script-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .script-name {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(64px, 11vw, 148px);
+    color: var(--gold);
+    line-height: 1.15;
+    white-space: nowrap;
+    clip-path: inset(0 100% 0 0);
+    animation: writeReveal 3.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
+  }
+
+  @keyframes writeReveal {
+    0%   { clip-path: inset(0 100% 0 0); }
+    100% { clip-path: inset(0 0% 0 0); }
+  }
+
+  .pen-nib {
+    position: absolute;
+    top: 52%;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.2), 0 0 14px 6px rgba(201,168,76,0.35), 0 0 30px 12px rgba(201,168,76,0.1);
+    transform: translateY(-50%);
+    left: 0%;
+    animation: nibMove 3.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
+  }
+
+  @keyframes nibMove {
+    0%   { left: 0%;   opacity: 1; }
+    92%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 1s ease 4s forwards;
+    margin: 10px 0 14px;
+  }
+
+  .div-line { height: 1px; width: 100px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.55)); }
+  .div-line.r { background: linear-gradient(to left, transparent, rgba(201,168,76,0.55)); }
+  .div-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+  .group-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(9px, 1vw, 11px);
+    letter-spacing: 10px;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s ease 4.3s forwards;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.6vw, 19px);
+    color: rgba(255,255,255,0.32);
+    margin-top: 28px;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 5s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 1s ease 5.6s forwards;
+  }
+
+  .scroll-hint span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.22);
+    text-transform: uppercase;
+  }
+
+  .scroll-stem {
+    width: 1px; height: 44px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+    animation: stemPulse 2.4s ease-in-out 5.6s infinite;
+  }
+
+  @keyframes stemPulse { 0%,100%{opacity:0.35} 50%{opacity:1} }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION SHARED ───────────────────────── */
+  .section-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: rgba(201,168,76,0.35);
+  }
+
+  /* ─── ABOUT ─────────────────────────────────── */
+  #about {
+    background: var(--off-white);
+    padding: 110px 60px;
+    color: var(--text);
+  }
+
+  .about-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 90px;
+    align-items: start;
+  }
+
+  #about h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.2vw, 38px);
+    font-weight: 400;
+    color: var(--navy-mid);
+    line-height: 1.38;
+    margin-bottom: 26px;
+  }
+
+  #about p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 18px;
+  }
+
+  .name-origin {
+    margin-top: 36px;
+    padding: 28px 28px 28px 24px;
+    border-left: 3px solid var(--gold);
+    background: var(--cream);
+  }
+
+  .name-origin p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Capabilities list */
+  .cap-list { padding-top: 4px; }
+
+  .cap-item {
+    display: flex;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cap-item:first-of-type { border-top: 1px solid var(--border); }
+
+  .cap-dot {
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  .cap-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .cap-text small {
+    display: block;
+    font-size: 13px;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  /* ─── CONTACT SECTION ──────────────────────── */
+  #contact {
+    background: var(--navy-mid);
+    padding: 110px 60px;
+  }
+
+  .contact-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 90px;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.2vw, 38px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.38;
+    margin-bottom: 26px;
+  }
+
+  .contact-info p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.85;
+    margin-bottom: 36px;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .contact-detail a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: opacity 0.3s ease;
+  }
+
+  .contact-detail a:hover { opacity: 0.7; }
+
+  .contact-detail a::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* Form */
+  .inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    padding: 14px 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+  }
+
+  .form-group select option { background: var(--navy-mid); color: var(--white); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: rgba(201,168,76,0.5);
+    background: rgba(255,255,255,0.09);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+  .form-group textarea { resize: vertical; min-height: 130px; }
+
+  .form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+
+  .form-submit p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .btn-submit {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--navy-dark);
+    background: var(--gold);
+    border: none;
+    padding: 16px 36px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    background: var(--gold-light);
+    letter-spacing: 6px;
+  }
+
+  /* Form success message */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 50px 20px;
+  }
+
+  .form-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .form-success p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ─── FOOTER ────────────────────────────────── */
+  footer {
+    background: var(--navy-dark);
+    padding: 44px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .footer-brand {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 32px;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  .footer-center {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2.2;
+  }
+
+  .footer-meta {
+    text-align: right;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    line-height: 2.2;
+  }
+
+  /* ─── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    #about, #contact { padding: 80px 28px; }
+    .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-meta { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#home" class="nav-brand">Knox Jefferson</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Inquire</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────── -->
+<section id="home">
+  <div class="hero-glow"></div>
+
+  <div class="top-bar">
+    <div class="top-bar-line"></div>
+    <span class="top-bar-text">Est. 2026 &nbsp;·&nbsp; Dandridge, Tennessee</span>
+    <div class="top-bar-line"></div>
+  </div>
+
+  <div class="script-container">
+    <div class="pen-nib"></div>
+    <div class="script-name">Knox Jefferson</div>
+  </div>
+
+  <div class="divider">
+    <div class="div-line"></div>
+    <div class="div-diamond"></div>
+    <div class="div-line r"></div>
+  </div>
+
+  <div class="group-label">Group &nbsp;&nbsp;&nbsp; LLC</div>
+
+  <p class="tagline">Project Management &nbsp;·&nbsp; Federal Contracting &nbsp;·&nbsp; Digital Solutions</p>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-stem"></div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────── -->
+<section id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-eyebrow">About</div>
+      <h2>Built on principle.<br>Delivered with precision.</h2>
+      <p>Knox Jefferson Group LLC is a Tennessee-based management consulting and project delivery firm. We specialize in organizing, orchestrating, and executing complex initiatives for federal agencies and private organizations — managing the full scope of work from planning through completion.</p>
+      <p>Whether the engagement is a federal contract requiring disciplined project oversight or a private initiative demanding coordinated subcontractor management, Knox Jefferson Group brings the same standard of leadership and accountability to every assignment.</p>
+      <div class="name-origin">
+        <p>"Knox and Jefferson are more than county names to us — they represent the tradition of American leadership, accountability, and service that we carry into every engagement."</p>
+      </div>
+    </div>
+
+    <div class="cap-list">
+      <div class="section-eyebrow">Core Capabilities</div>
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">Federal Project Management
+          <small>SAM.gov registered · Government contract delivery</small>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">Subcontractor Orchestration
+          <small>Coordinating specialized teams across disciplines and geographies</small>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">Management Consulting
+          <small>Operations, process improvement, and strategic advisory services</small>
+        </div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">Digital Strategy &amp; Development
+          <small>Web presence, digital infrastructure, and online business solutions</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────── -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow" style="color:rgba(201,168,76,0.8);">Contact</div>
+      <h2>Let's discuss your next project.</h2>
+      <p>Whether you represent a federal agency, a prime contractor seeking capable partners, or an organization looking for experienced project leadership — we welcome the conversation.</p>
+      <div class="contact-detail">
+        <a href="mailto:Gustin.Puckett@KnoxJefferson.com">Gustin.Puckett@KnoxJefferson.com</a>
+        <a href="tel:+18658886487">(865) 888-6487</a>
+        <a href="#">Dandridge, Tennessee</a>
+      </div>
+    </div>
+
+    <div>
+      <!-- 
+        FORM SETUP INSTRUCTIONS:
+        1. Go to formspree.io and create a free account
+        2. Create a new form and copy your form ID
+        3. Replace "YOUR_FORM_ID" in the action below with your actual ID
+        Example: action="https://formspree.io/f/xpznkrqw"
+      -->
+      <form class="inquiry-form" id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="john@agency.gov" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="(555) 000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Organization</label>
+          <input type="text" name="organization" placeholder="Agency or Company Name">
+        </div>
+        <div class="form-group">
+          <label>Nature of Inquiry</label>
+          <select name="inquiry_type">
+            <option value="" disabled selected>Select one</option>
+            <option>Federal Contract Opportunity</option>
+            <option>Project Management Services</option>
+            <option>Subcontractor Partnership</option>
+            <option>Digital Services</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell us about your project or opportunity..."></textarea>
+        </div>
+        <div class="form-submit">
+          <p>We respond within one business day.</p>
+          <button type="submit" class="btn-submit">Submit Inquiry</button>
+        </div>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <h3>Thank you.</h3>
+        <p>Your inquiry has been received. We will be in touch within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">Knox Jefferson</div>
+  <div class="footer-center">
+    Knox Jefferson Group LLC<br>
+    Dandridge, Tennessee &nbsp;·&nbsp; Jefferson County
+  </div>
+  <div class="footer-meta">
+    knoxjefferson.com<br>
+    &copy; 2026 All Rights Reserved
+  </div>
+</footer>
+
+<script>
+  // Sticky nav on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Form success handling
+  const form = document.getElementById('inquiryForm');
+  const success = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = form.action;
+
+    // If Formspree not yet configured, just show success message
+    if (action.includes('YOUR_FORM_ID')) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      return;
+    }
+
+    try {
+      const res = await fetch(action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    } catch {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>
