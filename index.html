@@ -199,28 +199,20 @@
   .div-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
 
   .group-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(9px, 1vw, 11px);
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0;
+    text-align: center;
     opacity: 0;
     animation: fadeUp 1s ease 4.3s forwards;
   }
 
-  .group-label span {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(9px, 1vw, 11px);
-    letter-spacing: 5px;
-    color: rgba(255,255,255,0.55);
-    text-transform: uppercase;
-  }
-
   .group-label .dot {
-    font-size: 8px;
     color: var(--gold);
-    opacity: 0.6;
-    margin: 0 14px;
-    letter-spacing: 0;
+    opacity: 0.65;
+    margin: 0 10px;
   }
 
   .tagline {
@@ -624,11 +616,7 @@
     <div class="div-line r"></div>
   </div>
 
-  <div class="group-label">
-    <span>Group</span>
-    <span class="dot">·</span>
-    <span>LLC</span>
-  </div>
+  <div class="group-label">G&thinsp;R&thinsp;O&thinsp;U&thinsp;P<span class="dot">·</span>L&thinsp;L&thinsp;C</div>
 
   <p class="tagline">Project Management &nbsp;·&nbsp; Federal Contracting &nbsp;·&nbsp; Digital Solutions</p>
 
