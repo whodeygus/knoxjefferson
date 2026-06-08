@@ -90,7 +90,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(ellipse at 30% 60%, rgba(13,43,94,0.85) 0%, var(--navy-dark) 100%);
+    background: var(--navy-dark);
   }
 
   #home::before {
@@ -582,6 +582,14 @@
 
 <!-- ─── HERO ─────────────────────────────────── -->
 <section id="home">
+
+  <video autoplay muted loop playsinline
+    style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+    <source src="Flag_Video_Graphic.mp4" type="video/mp4">
+  </video>
+
+  <div style="position:absolute; inset:0; background:rgba(6,15,30,0.62); z-index:1;"></div>
+
   <div class="hero-glow"></div>
 
   <div class="top-bar">
