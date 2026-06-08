@@ -95,6 +95,7 @@
     position: relative;
     overflow: hidden;
     background: var(--navy-dark);
+    padding: 0 24px;
   }
 
   .hero-video {
@@ -135,9 +136,12 @@
     opacity: 0;
     animation: fadeUp 1s ease 4.8s forwards;
     z-index: 3;
+    padding: 0 16px;
+    width: 100%;
+    justify-content: center;
   }
 
-  .top-bar-line { width: 50px; height: 1px; background: rgba(201,168,76,0.35); }
+  .top-bar-line { width: 50px; height: 1px; background: rgba(201,168,76,0.35); flex-shrink: 0; }
 
   .top-bar-text {
     font-family: 'Montserrat', sans-serif;
@@ -145,6 +149,7 @@
     letter-spacing: 5px;
     color: rgba(201,168,76,0.6);
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .script-container {
@@ -152,11 +157,13 @@
     display: inline-block;
     margin-bottom: 6px;
     z-index: 3;
+    max-width: 100%;
+    overflow: visible;
   }
 
   .script-name {
     font-family: 'Pinyon Script', cursive;
-    font-size: clamp(64px, 11vw, 148px);
+    font-size: clamp(52px, 14vw, 148px);
     color: var(--gold);
     line-height: 1.4;
     padding-bottom: 0.18em;
@@ -209,14 +216,14 @@
     position: relative;
   }
 
-  .div-line { height: 1px; width: 100px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.55)); }
+  .div-line { height: 1px; width: 80px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.55)); }
   .div-line.r { background: linear-gradient(to left, transparent, rgba(201,168,76,0.55)); }
   .div-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
 
   .tagline {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: clamp(14px, 1.6vw, 19px);
+    font-size: clamp(13px, 3.2vw, 19px);
     color: rgba(255,255,255,0.65);
     margin-top: 28px;
     letter-spacing: 0.5px;
@@ -224,6 +231,9 @@
     animation: fadeUp 1.2s ease 5s forwards;
     position: relative;
     z-index: 3;
+    text-align: center;
+    padding: 0 16px;
+    line-height: 1.8;
   }
 
   .scroll-hint {
@@ -486,6 +496,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 6px;
+    gap: 16px;
   }
 
   .form-submit p {
@@ -506,6 +517,7 @@
     padding: 16px 36px;
     cursor: pointer;
     transition: all 0.3s ease;
+    white-space: nowrap;
   }
 
   .btn-submit:hover {
@@ -572,14 +584,58 @@
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 18px 24px; }
-    nav.scrolled { padding: 14px 24px; }
+    nav { padding: 16px 20px; }
+    nav.scrolled { padding: 12px 20px; }
     .nav-links { display: none; }
-    #about, #contact { padding: 80px 28px; }
-    .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+
+    #home { padding: 0 16px; }
+
+    .top-bar { top: 80px; }
+    .top-bar-line { width: 24px; }
+    .top-bar-text { font-size: 7px; letter-spacing: 3px; }
+
+    .script-name {
+      font-size: clamp(44px, 13vw, 80px);
+    }
+
+    .tagline {
+      font-size: 13px;
+      letter-spacing: 0px;
+      padding: 0 12px;
+    }
+
+    .divider .div-line { width: 50px; }
+
+    .scroll-hint { bottom: 32px; }
+
+    #about { padding: 70px 24px; }
+    #contact { padding: 70px 24px; }
+
+    .about-inner { grid-template-columns: 1fr; gap: 44px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 44px; }
+
     .form-row { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 24px; text-align: center; }
+
+    .form-submit {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .btn-submit { width: 100%; text-align: center; padding: 16px; }
+
+    footer {
+      flex-direction: column;
+      gap: 20px;
+      padding: 36px 24px;
+      text-align: center;
+    }
     .footer-meta { text-align: center; }
+  }
+
+  @media (max-width: 400px) {
+    .script-name { font-size: 38px; }
+    .top-bar-text { letter-spacing: 2px; font-size: 6px; }
   }
 </style>
 </head>
@@ -602,7 +658,6 @@
   </video>
 
   <div class="hero-overlay"></div>
-
   <div class="hero-glow"></div>
 
   <div class="top-bar">
