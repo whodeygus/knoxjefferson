@@ -33,7 +33,7 @@
     overflow-x: hidden;
   }
 
-  /* ─── NAV ──────────────────────────────────── */
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -61,12 +61,16 @@
     color: var(--gold);
     opacity: 0.9;
     text-decoration: none;
+    position: relative;
+    z-index: 101;
   }
 
   .nav-links {
     display: flex;
     gap: 36px;
     list-style: none;
+    position: relative;
+    z-index: 101;
   }
 
   .nav-links a {
@@ -81,7 +85,7 @@
 
   .nav-links a:hover { color: var(--gold); }
 
-  /* ─── HERO ─────────────────────────────────── */
+  /* HERO */
   #home {
     min-height: 100vh;
     display: flex;
@@ -93,13 +97,19 @@
     background: var(--navy-dark);
   }
 
-  #home::before {
-    content: '';
+  .hero-video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero-overlay {
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    opacity: 0.5;
-    pointer-events: none;
+    background: rgba(6, 15, 30, 0.72);
+    z-index: 1;
   }
 
   .hero-glow {
@@ -111,6 +121,7 @@
     pointer-events: none;
     opacity: 0;
     animation: glowIn 2s ease 0.5s forwards;
+    z-index: 2;
   }
 
   @keyframes glowIn { to { opacity: 1; } }
@@ -123,6 +134,7 @@
     gap: 20px;
     opacity: 0;
     animation: fadeUp 1s ease 4.8s forwards;
+    z-index: 3;
   }
 
   .top-bar-line { width: 50px; height: 1px; background: rgba(201,168,76,0.35); }
@@ -135,11 +147,11 @@
     text-transform: uppercase;
   }
 
-  /* Script animation */
   .script-container {
     position: relative;
     display: inline-block;
     margin-bottom: 6px;
+    z-index: 3;
   }
 
   .script-name {
@@ -173,6 +185,7 @@
     left: 0%;
     opacity: 0;
     animation: none;
+    z-index: 4;
   }
 
   .pen-nib.animate {
@@ -192,23 +205,25 @@
     opacity: 0;
     animation: fadeUp 1s ease 4s forwards;
     margin: 10px 0 14px;
+    z-index: 3;
+    position: relative;
   }
 
   .div-line { height: 1px; width: 100px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.55)); }
   .div-line.r { background: linear-gradient(to left, transparent, rgba(201,168,76,0.55)); }
   .div-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
 
-  
-
   .tagline {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: clamp(14px, 1.6vw, 19px);
-    color: rgba(255,255,255,0.32);
+    color: rgba(255,255,255,0.65);
     margin-top: 28px;
     letter-spacing: 0.5px;
     opacity: 0;
     animation: fadeUp 1.2s ease 5s forwards;
+    position: relative;
+    z-index: 3;
   }
 
   .scroll-hint {
@@ -220,13 +235,14 @@
     gap: 10px;
     opacity: 0;
     animation: fadeUp 1s ease 5.6s forwards;
+    z-index: 3;
   }
 
   .scroll-hint span {
     font-family: 'Montserrat', sans-serif;
     font-size: 7px;
     letter-spacing: 5px;
-    color: rgba(255,255,255,0.22);
+    color: rgba(255,255,255,0.4);
     text-transform: uppercase;
   }
 
@@ -237,12 +253,13 @@
   }
 
   @keyframes stemPulse { 0%,100%{opacity:0.35} 50%{opacity:1} }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ─── SECTION SHARED ───────────────────────── */
+  /* SECTION SHARED */
   .section-eyebrow {
     font-family: 'Montserrat', sans-serif;
     font-size: 8px;
@@ -263,7 +280,7 @@
     background: rgba(201,168,76,0.35);
   }
 
-  /* ─── ABOUT ─────────────────────────────────── */
+  /* ABOUT */
   #about {
     background: var(--off-white);
     padding: 110px 60px;
@@ -313,7 +330,6 @@
     margin: 0;
   }
 
-  /* Capabilities list */
   .cap-list { padding-top: 4px; }
 
   .cap-item {
@@ -349,7 +365,7 @@
     margin-top: 4px;
   }
 
-  /* ─── CONTACT SECTION ──────────────────────── */
+  /* CONTACT */
   #contact {
     background: var(--navy-mid);
     padding: 110px 60px;
@@ -410,7 +426,6 @@
     flex-shrink: 0;
   }
 
-  /* Form */
   .inquiry-form {
     display: flex;
     flex-direction: column;
@@ -498,7 +513,6 @@
     letter-spacing: 6px;
   }
 
-  /* Form success message */
   .form-success {
     display: none;
     text-align: center;
@@ -519,7 +533,7 @@
     color: rgba(255,255,255,0.5);
   }
 
-  /* ─── FOOTER ────────────────────────────────── */
+  /* FOOTER */
   footer {
     background: var(--navy-dark);
     padding: 44px 60px;
@@ -556,7 +570,7 @@
     line-height: 2.2;
   }
 
-  /* ─── RESPONSIVE ────────────────────────────── */
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 18px 24px; }
     nav.scrolled { padding: 14px 24px; }
@@ -571,7 +585,7 @@
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────── -->
+<!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-brand">Knox Jefferson</a>
   <ul class="nav-links">
@@ -580,21 +594,22 @@
   </ul>
 </nav>
 
-<!-- ─── HERO ─────────────────────────────────── -->
+<!-- HERO -->
 <section id="home">
 
-  <video autoplay muted loop playsinline
-    style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+  <video class="hero-video" autoplay muted loop playsinline>
     <source src="Flag%20Video%20Graphic.mp4" type="video/mp4">
   </video>
 
-  <div style="position:relative; z-index:2; display:flex; flex-direction:column; align-items:center;">
-  <div class="top-bar">...
-  <div class="script-container">...
-  <div class="divider">...
-  <p class="tagline">...
-  <div class="scroll-hint">...
-</div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-glow"></div>
+
+  <div class="top-bar">
+    <div class="top-bar-line"></div>
+    <span class="top-bar-text">Est. 2026 &nbsp;·&nbsp; Dandridge, Tennessee</span>
+    <div class="top-bar-line"></div>
+  </div>
 
   <div class="script-container">
     <div class="pen-nib"></div>
@@ -607,17 +622,16 @@
     <div class="div-line r"></div>
   </div>
 
-  
-
   <p class="tagline">Project Management &nbsp;·&nbsp; Federal Contracting &nbsp;·&nbsp; Digital Solutions</p>
 
   <div class="scroll-hint">
     <span>Scroll</span>
     <div class="scroll-stem"></div>
   </div>
+
 </section>
 
-<!-- ─── ABOUT ─────────────────────────────────── -->
+<!-- ABOUT -->
 <section id="about">
   <div class="about-inner">
     <div>
@@ -660,7 +674,7 @@
   </div>
 </section>
 
-<!-- ─── CONTACT ───────────────────────────────── -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="contact-info">
@@ -675,13 +689,6 @@
     </div>
 
     <div>
-      <!-- 
-        FORM SETUP INSTRUCTIONS:
-        1. Go to formspree.io and create a free account
-        2. Create a new form and copy your form ID
-        3. Replace "YOUR_FORM_ID" in the action below with your actual ID
-        Example: action="https://formspree.io/f/xpznkrqw"
-      -->
       <form class="inquiry-form" id="inquiryForm" action="https://formspree.io/f/xojbrevn" method="POST">
         <div class="form-row">
           <div class="form-group">
@@ -735,7 +742,7 @@
   </div>
 </section>
 
-<!-- ─── FOOTER ────────────────────────────────── -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-brand">Knox Jefferson</div>
   <div class="footer-center">
@@ -749,7 +756,6 @@
 </footer>
 
 <script>
-  // Wait for Pinyon Script font to load before starting animation
   document.fonts.ready.then(() => {
     const scriptName = document.querySelector('.script-name');
     const penNib = document.querySelector('.pen-nib');
@@ -757,13 +763,11 @@
     if (penNib) penNib.classList.add('animate');
   });
 
-  // Sticky nav on scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Form success handling
   const form = document.getElementById('inquiryForm');
   const success = document.getElementById('formSuccess');
 
@@ -772,7 +776,6 @@
     const data = new FormData(form);
     const action = form.action;
 
-    // If Formspree not yet configured, just show success message
     if (action.includes('YOUR_FORM_ID')) {
       form.style.display = 'none';
       success.style.display = 'block';
